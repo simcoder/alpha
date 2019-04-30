@@ -1,0 +1,27 @@
+
+@import '~@angular/material/theming';
+
+// always include only once per project
+@include mat-core();
+
+// import our custom theme
+@import 'default-theme.scss';
+@import 'light-theme.scss';
+@import 'dark-theme.scss';
+
+// specify theme class eg: <body class="my-theme"> ... </body>
+.my-theme {
+  // use our theme with angular-material-theme mixin
+  @include angular-material-theme($my-theme);
+}
+
+// additional css classes
+// you can hardcode one of them on the <body> tag 
+// or switch dynamically during runtime with [class]
+.my-light-theme {
+    @include angular-material-theme($my-light-theme);
+  }
+  
+  .my-dark-theme {
+    @include angular-material-theme($my-dark-theme);
+  }
