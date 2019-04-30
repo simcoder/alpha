@@ -14,8 +14,11 @@
               </mat-slide-toggle>
           </div>
           <div >
-              <button type="button" mat-button (click)="drawer.toggle()">
-                  User
+              <button *ngIf="auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
+                Logout
+                </button>
+                <button *ngIf="!auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
+                    Login
                 </button>
           </div>
         </div>

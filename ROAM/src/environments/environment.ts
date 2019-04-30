@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth:{
+    clientID: "NcXmlrI17X6go0HBA0z2vHAos8KD7zhg",
+    domain: "simcoder.auth0.com",
+    callbackURL: "http://localhost:4200"
+  }
 };
 
 /*

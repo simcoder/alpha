@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding, ElementRef, HostListener } from '@angular/core';
+import { AuthService } from './services/auth.service';
 export interface Menu {
   name: string;
   route: string;
@@ -26,10 +27,15 @@ export class AppComponent implements OnInit {
   defaultTheme:string = "my-theme";
   isMobile = /Android|iPhone/i.test(window.navigator.userAgent);
 
-  constructor() { }
+  constructor(public auth: AuthService) {
+     auth.handleAuthentication();
+   }
 
   ngOnInit(): void {
     this.changeMenuItemWidthMobileview();
+    if (this.auth.isAuthenticated()) {
+      this.auth.renewTokens();
+    }
   }
 
   onThemSwitch(event):void {
