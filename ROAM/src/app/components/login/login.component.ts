@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { AppMetadata$ } from '../../app.default';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -13,12 +13,18 @@ export class LoginComponent implements OnInit, OnDestroy {
   
   ngDestroy$:Subject<boolean>= new Subject();
   constructor() { }
-  message
-  ngOnInit() {
-    AppMetadata$.pipe(takeUntil(this.ngDestroy$)).subscribe(meta=>{
-      this.message = meta.loggedOutMessage;
-    })
-  }
+  
+  ngOnInit() {}
+
+  @ViewChild('container') container:ElementRef;
+
+ngAfterViewInit() {
+  AppMetadata$.pipe(takeUntil(this.ngDestroy$)).subscribe(meta=>{
+    this.container.nativeElement.insertAdjacentHTML('beforeend', meta.landingPage);
+
+  })
+ 
+}
 
   ngOnDestroy(): void {
     this.ngDestroy$.next(true);

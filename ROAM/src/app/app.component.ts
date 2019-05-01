@@ -13,7 +13,7 @@ import { faSignOutAlt, faSignInAlt, faBars } from '@fortawesome/free-solid-svg-i
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  appMetadata$: BehaviorSubject<AppMetadata> = new BehaviorSubject<AppMetadata>(null);
+  appMetadata$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   ngDestroy$: Subject<boolean> = new Subject();
   @HostBinding('style.width') width: Number;
 
@@ -79,8 +79,8 @@ export class AppComponent implements OnInit, OnDestroy {
       item.selectedClass = null
     });
     const name = this.appMetadata$.getValue().name;
-    const loggedOutMessage = this.appMetadata$.getValue().loggedOutMessage;
-    this.appMetadata$.next({ name, loggedOutMessage, sideMenu: newMenu })
+    const landingPage = this.appMetadata$.getValue().landingPage;
+    this.appMetadata$.next({ name, landingPage, sideMenu: newMenu })
     selectedItem.selectedClass = "primary";
   }
 

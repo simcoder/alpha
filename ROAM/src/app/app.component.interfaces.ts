@@ -8,4 +8,5 @@ export interface Menu {
     sideMenu: Menu[];
     name:string;
     loggedOutMessage:string;
+    landingPage:string;
   }

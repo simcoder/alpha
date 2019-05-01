@@ -7,6 +7,7 @@ const menu: Menu[] = [
 const meta:AppMetadata = {
     name: "ROAM",
     sideMenu: menu,
-    loggedOutMessage: "Welcome to XCompany Resident Portal Please Login"
+    loggedOutMessage: "",
+    landingPage: "<h2>Welcome to XCompany Resident Portal Please Login</h2>"
   }
 export const AppMetadata$: BehaviorSubject<AppMetadata>  = new BehaviorSubject<AppMetadata>(meta);
