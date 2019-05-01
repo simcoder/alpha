@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -8,13 +9,19 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { CallbackComponent } from './components/callback/callback.component';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +30,10 @@ import { AuthService } from './services/auth.service';
     AppRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatMenuModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

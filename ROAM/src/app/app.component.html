@@ -14,23 +14,29 @@
               </mat-slide-toggle>
           </div>
           <div >
-              <button *ngIf="auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
-                Logout
-                </button>
-                <button *ngIf="!auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
-                    Login
-                </button>
+              <div  *ngIf="auth.isAuthenticated()">
+                  <button mat-button [matMenuTriggerFor]="menu">{{profile?.nickname}}</button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="auth.logout()">Logout</button>
+                  </mat-menu>
+              </div>
+              <!-- <button *ngIf="auth.isAuthenticated()" type="button" mat-button (click)="auth.logout()">
+                  Logout
+              </button> -->
+              <button *ngIf="!auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
+                  Login
+              </button>
           </div>
         </div>
 
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
-  <div class="content">
+  <div  class="content">
     <mat-drawer-container autosize>
       <mat-drawer #drawer mode="side">
         <ul class="list">
-          <li [style.width]="width + 'px'"  class="list-item"  *ngFor="let menuItem of menu">
+          <li [style.width]="width + 'px'"  class="list-item"  *ngFor="let menuItem of this.appMetadata$.getValue().sideMenu">
               <button class="b" routerLink="{{menuItem.route}}" type="button" mat-button [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
                   {{ menuItem.name }}
               </button>
@@ -44,3 +50,4 @@
     </mat-drawer-container>
   </div>
 </div>
+
