@@ -4,6 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { AppMetadata, Menu } from './app.component.interfaces';
 import { AppMetadata$ } from './app.default';
 import { takeUntil } from 'rxjs/operators';
+import { faSignOutAlt, faSignInAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,11 @@ export class AppComponent implements OnInit, OnDestroy {
   profile:any;
 
   title = 'ROAM';
+  //Icons
+  signout: any = faSignOutAlt;
+  signin: any = faSignInAlt;
+  hamburger: any = faBars;
+  //theme
   defaultTheme: string = "my-theme";
   isMobile = /Android|iPhone/i.test(window.navigator.userAgent);
 
@@ -42,6 +48,9 @@ export class AppComponent implements OnInit, OnDestroy {
     })
     if (this.auth.isAuthenticated()) {
       this.auth.renewTokens();
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
     }
   }
 

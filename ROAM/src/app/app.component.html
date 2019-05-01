@@ -6,7 +6,7 @@
         <div class="header__row">
           <div class="menu__toggle">
               <button type="button" mat-button (click)="drawer.toggle()">
-                  Toggle
+                  <fa-icon [icon]="hamburger"></fa-icon>
                 </button>
           </div>
           <div >
@@ -15,17 +15,15 @@
           </div>
           <div >
               <div  *ngIf="auth.isAuthenticated()">
-                  <button mat-button [matMenuTriggerFor]="menu">{{profile?.nickname}}</button>
+                  <button mat-button [matMenuTriggerFor]="menu">Hi {{profile?.nickname}}!</button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="auth.logout()">Logout</button>
+                    <button mat-menu-item (click)="auth.logout()"><fa-icon [icon]="signout"></fa-icon> Logout</button>
                   </mat-menu>
               </div>
-              <!-- <button *ngIf="auth.isAuthenticated()" type="button" mat-button (click)="auth.logout()">
-                  Logout
-              </button> -->
               <button *ngIf="!auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
-                  Login
+                  <fa-icon [icon]="signin"></fa-icon> Login
               </button>
+              
           </div>
         </div>
 
