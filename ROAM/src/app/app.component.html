@@ -34,7 +34,7 @@
     <mat-drawer-container autosize>
       <mat-drawer #drawer mode="side">
         <ul class="list">
-          <li [style.width]="width + 'px'"  class="list-item"  *ngFor="let menuItem of this.appMetadata$.getValue().sideMenu">
+          <li [style.width]="width + 'px'"  class="list-item"  *ngFor="let menuItem of sideMenu$ | async">
               <button class="b" routerLink="{{menuItem.route}}" type="button" mat-button [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
                   {{ menuItem.name }}
               </button>
