@@ -1,0 +1,47 @@
+<div  [ngClass]="defaultTheme">
+  <div class="header">
+    <mat-toolbar class="t" color="primary">
+      <mat-toolbar-row >
+        <div class="header__row">
+          <div class="menu__toggle">
+              <button type="button" mat-button (click)="drawer.toggle()">
+                  <fa-icon [icon]="hamburger"></fa-icon>
+                </button>
+          </div>
+          <div >
+              <mat-slide-toggle  color="secondary" checked="false" (change)="onThemSwitch($event)">
+              </mat-slide-toggle>
+          </div>
+          <div >
+              <div  *ngIf="auth.isAuthenticated()">
+                  <button mat-button [matMenuTriggerFor]="menu">Hi {{profile?.nickname}}!</button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="auth.logout()"><fa-icon [icon]="signout"></fa-icon> Logout</button>
+                  </mat-menu>
+              </div>
+              <button *ngIf="!auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
+                  <fa-icon [icon]="signin"></fa-icon> Login
+              </button>
+          </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div  class="content">
+    <mat-drawer-container autosize>
+      <mat-drawer #drawer mode="side">
+        <ul class="list">
+          <li [style.width]="width + 'px'"  class="list-item"  *ngFor="let menuItem of sideMenu$ | async">
+              <button class="b" routerLink="{{menuItem.route}}" *ngIf="menuItem.featureFlag" type="button" mat-button [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
+                  {{ menuItem.name }}
+              </button>
+          </li>
+        </ul>
+      </mat-drawer>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-container>
+  </div>
+</div>
+
