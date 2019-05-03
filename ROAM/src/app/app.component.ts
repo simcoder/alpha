@@ -1,5 +1,5 @@
+import { AuthService } from '../../projects/auth/src/lib/auth.service';
 import { Component, OnInit, HostBinding, HostListener, OnDestroy } from '@angular/core';
-import { AuthService } from './services/auth.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Menu } from './app.component.interfaces';
 import { AppMetadata$ } from './app.default';
@@ -34,16 +34,15 @@ export class AppComponent implements OnInit, OnDestroy {
   defaultTheme: string = "my-theme";
   isMobile = /Android|iPhone/i.test(window.navigator.userAgent);
 
-  constructor(public auth: AuthService, private router: Router) {
+  constructor(public auth: AuthService, router: Router) {
     AppMetadata$.pipe(takeUntil(this.ngDestroy$)).subscribe(meta => {
-      this.sideMenu$.next(meta.sideMenu);
+      this.sideMenu$.next(meta.sideMenu);      
     });
     router.events.subscribe((route: any) => {
       if (route.url && this.sideMenu$.getValue()) {
         const menuName: string = route.url.toString().replace('/', '');
         this.toggleActiveMenu(menuName);
       }
-
     });
   }
 

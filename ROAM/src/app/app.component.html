@@ -6,7 +6,7 @@
         <div class="header__row">
           <div class="menu__toggle">
               <button type="button" mat-button (click)="drawer.toggle()">
-                  Menu <fa-icon [icon]="hamburger"></fa-icon>
+                  <fa-icon [icon]="hamburger"></fa-icon>
                 </button>
           </div>
           <div >
@@ -39,7 +39,6 @@
                   {{ menuItem.name }}
               </button>
           </li>
-         
         </ul>
       </mat-drawer>
       <div class="inner-content">

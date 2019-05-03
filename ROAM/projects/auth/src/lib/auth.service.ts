@@ -1,25 +1,23 @@
+import { environment } from './../../../../src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './auth0-variables';
-import * as moment from 'moment-timezone'
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
 
-  private _user: string;
-
-
   auth0 = new auth0.WebAuth({
-    clientID: AUTH_CONFIG.clientID,
-    domain: AUTH_CONFIG.domain,
+    clientID: environment.auth.clientID,
+    domain: environment.auth.domain,
     responseType: 'token id_token',
-    redirectUri: AUTH_CONFIG.callbackURL
+    redirectUri: environment.auth.callbackURL
   });
 
   constructor(public router: Router) {
@@ -75,7 +73,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.localLogin(authResult);
         this.getProfile(null);
-        this.router.navigate(['']);
+        this.router.navigate(['dashboard']);
       } else if (err) {
         this.router.navigate(['']);
         console.log(err);

@@ -1,21 +1,17 @@
+import { NoModuleComponent } from './components/no-module/no-module.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardAppModule } from 'projects/dashboard/src/app/app.module';
-import { PaymentAppModule } from 'projects/payments/src/app/app.module';
-import { AuthGuard } from './services/auth-guard.service';
 import { CallbackComponent } from './components/callback/callback.component';
 
 const routes: Routes = [
   {
     path: 'payments',
-    loadChildren: ()=> PaymentAppModule,
-    canActivate: [AuthGuard]
+    loadChildren: "../../projects/payments/src/app/app.module#PaymentAppModule"
   },
   {
     path: 'dashboard',
-    loadChildren: ()=> DashboardAppModule,
-    canActivate: [AuthGuard]
+    loadChildren: "../../projects/dashboard/src/app/app.module#DashboardAppModule"
   },
   {
     path: 'login',
@@ -25,7 +21,14 @@ const routes: Routes = [
     path: 'callback',
     component: CallbackComponent
   },
-  { path: '**', redirectTo: 'dashboard' }
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
+  { path: '**', 
+    component: NoModuleComponent
+  }
 ];
 
 @NgModule({

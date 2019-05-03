@@ -3,6 +3,7 @@ export interface Menu {
     route: string;
     icon?: string;
     selectedClass?: string;
+    featureFlag: boolean;
   }
   export interface AppMetadata {
     sideMenu: Menu[];

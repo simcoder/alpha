@@ -1,8 +1,17 @@
 import { BehaviorSubject } from 'rxjs';
 import { AppMetadata, Menu } from './app.component.interfaces';
 const menu: Menu[] = [
-    { name: "Dashboard", route: "/dashboard", selectedClass: "primary" },
-    { name: "Payments", route: "/payments", selectedClass: null}
+    { name: "Dashboard", 
+      route: "/dashboard", 
+      selectedClass: "primary",
+      featureFlag: true 
+    },
+    { 
+      name: "Payments", 
+      route: "/payments", 
+      selectedClass: null,
+      featureFlag: true  
+    }
   ];
 const meta:AppMetadata = {
     name: "ROAM",
