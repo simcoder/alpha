@@ -11,6 +11,12 @@ const menu: Menu[] = [
       route: "/payments", 
       selectedClass: null,
       featureFlag: true  
+    },
+    { 
+      name: "Maintenance", 
+      route: "/maintenance", 
+      selectedClass: null,
+      featureFlag: true  
     }
   ];
 const meta:AppMetadata = {

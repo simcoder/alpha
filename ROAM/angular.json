@@ -397,6 +397,134 @@
           }
         }
       }
+    },
+    "maintenance": {
+      "root": "projects/maintenance/",
+      "sourceRoot": "projects/maintenance/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/maintenance",
+            "index": "projects/maintenance/src/index.html",
+            "main": "projects/maintenance/src/main.ts",
+            "polyfills": "projects/maintenance/src/polyfills.ts",
+            "tsConfig": "projects/maintenance/tsconfig.app.json",
+            "assets": [
+              "projects/maintenance/src/favicon.ico",
+              "projects/maintenance/src/assets"
+            ],
+            "styles": [
+              "projects/maintenance/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/maintenance/src/environments/environment.ts",
+                  "with": "projects/maintenance/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "maintenance:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "maintenance:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "maintenance:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/maintenance/src/test.ts",
+            "polyfills": "projects/maintenance/src/polyfills.ts",
+            "tsConfig": "projects/maintenance/tsconfig.spec.json",
+            "karmaConfig": "projects/maintenance/karma.conf.js",
+            "styles": [
+              "projects/maintenance/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/maintenance/src/favicon.ico",
+              "projects/maintenance/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/maintenance/tsconfig.app.json",
+              "projects/maintenance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "maintenance-e2e": {
+      "root": "projects/maintenance-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/maintenance-e2e/protractor.conf.js",
+            "devServerTarget": "maintenance:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "maintenance:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/maintenance-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ROAM"
