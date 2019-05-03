@@ -49,16 +49,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    this.auth.handleAuthentication();
     this.changeMenuItemWidthMobileview();
     this.auth.userProfile$.pipe(takeUntil(this.ngDestroy$)).subscribe(profile => {
       this.profile = profile;
     })
-    if (this.auth.isAuthenticated()) {
-      this.auth.renewTokens();
-      this.auth.getProfile((err, profile) => {
-        this.profile = profile;
-      });
-    }
   }
 
   onThemSwitch(event): void {

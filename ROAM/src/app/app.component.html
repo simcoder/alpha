@@ -1,8 +1,7 @@
-<div [ngClass]="defaultTheme">
+<div  [ngClass]="defaultTheme">
   <div class="header">
     <mat-toolbar class="t" color="primary">
       <mat-toolbar-row >
-       
         <div class="header__row">
           <div class="menu__toggle">
               <button type="button" mat-button (click)="drawer.toggle()">
@@ -23,10 +22,8 @@
               <button *ngIf="!auth.isAuthenticated()" type="button" mat-button (click)="auth.login()">
                   <fa-icon [icon]="signin"></fa-icon> Login
               </button>
-              
           </div>
         </div>
-
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
