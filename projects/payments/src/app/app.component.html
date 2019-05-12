@@ -7,3 +7,13 @@
 </div>
 
 <router-outlet></router-outlet>
+<button (click)="addField()">Add Field</button>
+<div class="form">
+  <div style="text-align:center">
+  <h1>
+  Registration Form
+  </h1>
+  </div>
+  <lib-dynamic-form [fields]="regConfig" (submit)="submit($event)">
+  </lib-dynamic-form>
+  </div>
