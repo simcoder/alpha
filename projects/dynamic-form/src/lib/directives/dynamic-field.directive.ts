@@ -30,9 +30,6 @@ export class DynamicFieldDirective implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.field){
-
-    }
     const factory = this.resolver.resolveComponentFactory(componentMapper[this.field.type.toLowerCase()]);
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.field = this.field;

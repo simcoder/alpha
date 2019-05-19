@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CallbackComponent } from './components/callback/callback.component';
 import { PaymentAppModule } from 'projects/payments/src/app/app.module';
-import { DashboardAppModule } from 'projects/dashboard/src/app/app.module';
+import { DashboardModule } from 'projects/dashboard/src/app/dashboard.module';
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: "../../projects/dashboard/src/app/app.module#DashboardAppModule"
+    loadChildren: "../../projects/dashboard/src/app/dashboard.module#DashboardModule"
   },
   {
     path: 'maintenance',

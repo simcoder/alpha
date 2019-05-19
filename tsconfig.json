@@ -24,6 +24,12 @@
       ],
       "dynamic-form/*": [
         "dist/dynamic-form/*"
+      ],
+      "widget": [
+        "dist/widget"
+      ],
+      "widget/*": [
+        "dist/widget/*"
       ]
     }
   }
