@@ -1,0 +1,12 @@
+.widget {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    padding-top: 20px;
+    flex-wrap: wrap;
+
+    .widget__item {
+        margin: 20px;
+    }
+}
