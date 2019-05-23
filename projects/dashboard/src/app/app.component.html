@@ -7,6 +7,16 @@
 </div>
 -->
 <router-outlet></router-outlet> 
-<div class="">
+<!-- <div class="">
    <lib-widget></lib-widget>
-</div>
+</div> -->
+
+<app-custom-stepper linear>
+        <cdk-step editable="true" [completed]="completed">
+            <button (click)="completeStep()">Complete step</button>
+        </cdk-step>
+        <cdk-step editable="true"><p>This is any content of "Step 2"</p></cdk-step>
+        <cdk-step editable="true"><p>This is any content of "Step 3"</p></cdk-step>
+</app-custom-stepper>
+
+

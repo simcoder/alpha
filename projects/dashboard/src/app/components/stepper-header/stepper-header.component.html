@@ -1,0 +1,16 @@
+
+<div class="stepper stepper--horizontal">
+    <div class="col" *ngFor="let step of steps; let i = index;" class="col" [ngClass]="{'current': step.isActive}">
+      <div class="test-parent">
+        <div>
+            <span class="step-number" (click)="onStepClick(step.number)" >{{step.number}}</span>
+        </div>
+        <div >
+            <span>{{step.title}}</span>
+        </div>
+      </div>
+     
+
+      <div *ngIf="!step.isLast" class="step-title"></div>
+    </div>
+</div>
