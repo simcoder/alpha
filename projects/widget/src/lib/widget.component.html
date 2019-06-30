@@ -1,11 +1,11 @@
 <div>
     <div class="widget">
             <mat-card *ngFor="let widget of widgets" class="widget__item">
-                    <mat-card-header>
-                        <mat-card-title>{{widget.title}}</mat-card-title>
-                    </mat-card-header>
+                    <div class="widget__header">
+                        <fa-icon [icon]="['fas', 'cog']"></fa-icon>
+                    </div>
                     <mat-card-content>
-                        <div dynamicComponent widgetName="{{widget.name}}">
+                        <div dynamicComponent [widget]="widget">
                         </div>
                     </mat-card-content>
             </mat-card>

@@ -8,5 +8,11 @@
 
     .widget__item {
         margin: 20px;
+        width: 300px;
+        height: 200px;
+    }
+    .widget__header {
+        display: flex;
+        justify-content: flex-end;
     }
 }

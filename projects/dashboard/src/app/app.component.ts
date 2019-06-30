@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Widget } from 'projects/widget/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dashboard';
+
+  mockData: Widget[] = [
+    {
+      name: "Payment",
+      metadata: {
+        amountDue: 1245
+      }
+    }
+  ]
 }

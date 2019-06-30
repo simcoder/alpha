@@ -24,7 +24,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   profile: any;
-
   title = 'ROAM';
   //Icons
   signout: any = faSignOutAlt;
