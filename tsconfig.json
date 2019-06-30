@@ -30,6 +30,12 @@
       ],
       "widget/*": [
         "dist/widget/*"
+      ],
+      "header": [
+        "dist/header"
+      ],
+      "header/*": [
+        "dist/header/*"
       ]
     }
   }

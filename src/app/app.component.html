@@ -13,7 +13,11 @@
             </mat-slide-toggle>
           </div>
           <div>
-            <div *ngIf="auth.isAuthenticated()">
+            <div class="row" *ngIf="auth.isAuthenticated()">
+              <div class="notification">
+                  <mat-icon matBadge="15" matBadgeColor="warn" fontSet="fas" fontIcon="fa-bell"></mat-icon>
+              </div>
+             
               <button mat-button [matMenuTriggerFor]="menu">Hi {{profile?.nickname}}!</button>
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="auth.logout()">
@@ -33,12 +37,16 @@
     <mat-drawer-container autosize>
       <mat-drawer #drawer mode="side">
         <ul class="list">
-          <li [style.width]="width + 'px'" class="list-item" *ngFor="let menuItem of sideMenu$ | async">
-            <button class="b" routerLink="{{menuItem.route}}" *ngIf="menuItem.featureFlag" type="button" mat-button
-              [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
-              {{ menuItem.name }}
-            </button>
-          </li>
+            <mat-list>
+                <mat-list-item  *ngFor="let menuItem of sideMenu$ | async">
+                    <mat-icon fontSet="fas" fontIcon="{{menuItem.icon}}"></mat-icon>
+                    <button  routerLink="{{menuItem.route}}" *ngIf="menuItem.featureFlag" type="button" mat-button
+                    [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
+                    {{ menuItem.name }}
+                   </button>
+                   <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list>
         </ul>
       </mat-drawer>
       <div class="inner-content">

@@ -5,6 +5,8 @@ import { AppChildRoutingModule } from './app-routing.child.module';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WidgetModule } from 'projects/widget/src/public-api';
+import { HeaderModule } from 'projects/header/src/lib/header.module';
+import { MatDividerModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { WidgetModule } from 'projects/widget/src/public-api';
   imports: [
     AppChildRoutingModule,
     WidgetModule,
-    CommonModule
+    CommonModule,
+    HeaderModule,
+    MatDividerModule
   ],
   providers: [],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
