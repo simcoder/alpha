@@ -8,7 +8,6 @@ import { Widget } from 'projects/widget/src/public-api';
 })
 export class AppComponent {
   title = 'dashboard';
-
   mockData: Widget[] = [
     {
       name: "Payment",

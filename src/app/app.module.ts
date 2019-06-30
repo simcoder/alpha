@@ -13,6 +13,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CallbackComponent } from './components/callback/callback.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatIconModule, MatListModule, MatDividerModule } from '@angular/material';
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatSlideToggleModule,
     MatMenuModule,
     FontAwesomeModule,
-    AuthModule
+    AuthModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatListModule,
+    MatDividerModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

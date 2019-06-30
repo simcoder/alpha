@@ -4,19 +4,22 @@ const menu: Menu[] = [
     { name: "Dashboard", 
       route: "/dashboard", 
       selectedClass: "primary",
-      featureFlag: true 
+      featureFlag: true,
+      icon:"fa-tachometer-alt" 
     },
     { 
       name: "Payments", 
       route: "/payments", 
       selectedClass: null,
-      featureFlag: true  
+      featureFlag: true,
+      icon:"fa-money-bill-alt" 
     },
     { 
       name: "Maintenance", 
       route: "/maintenance", 
       selectedClass: null,
-      featureFlag: true  
+      featureFlag: true ,
+      icon:"fa-toolbox" 
     }
   ];
 const meta:AppMetadata = {

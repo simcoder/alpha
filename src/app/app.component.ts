@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { Menu } from './app.component.interfaces';
 import { AppMetadata$ } from './app.default';
 import { takeUntil } from 'rxjs/operators';
-import { faSignOutAlt, faSignInAlt, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faSignInAlt, faBars, faBell } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
   signout: any = faSignOutAlt;
   signin: any = faSignInAlt;
   hamburger: any = faBars;
+  bell: any = faBell;
   //theme
   defaultTheme: string = "my-theme";
   isMobile = /Android|iPhone/i.test(window.navigator.userAgent);
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
   }
+
 
 
 
