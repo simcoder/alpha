@@ -1,0 +1,26 @@
+<div class="row__center">
+   Your new Balance
+</div>
+<div class="row__center balance">
+  <span [ngStyle]="{'color': amountDue === 0 ? 'green' : 'red' }">
+      {{ amountDue | currency :'USD':'symbol':'1.2-2' }}
+  </span>
+</div>
+<div  class="row__center button_row">
+  <a [routerLink]="['/payments']" >
+    <button  type="button" mat-raised-button color="primary">
+        <fa-icon [icon]="['fas', 'money-bill-alt']"></fa-icon>
+        <span style="padding-left: 10px;">make a payment</span>
+      </button>
+  </a>
+   
+</div>
+<div class="row__center button_row">
+  <a [routerLink]="['/maintenance']">
+      <button   type="button" mat-raised-button color="primary">
+        <fa-icon [icon]="['fas', 'toolbox']"></fa-icon>
+        <span style="padding-left: 10px;">submmit a ticket</span>
+      </button>
+  </a>
+   
+</div>

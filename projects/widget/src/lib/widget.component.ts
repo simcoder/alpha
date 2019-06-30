@@ -7,33 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./widget.component.scss']
 })
 export class WidgetComponent implements OnInit {
-  mock: Widget[] = [
-    {
-     name: "weather",
-      title: "Weather"
-    },
-    {
-      name: "weather",
-       title: "Weather"
-     },
-     {
-      name: "weather",
-       title: "Weather"
-     },
-     {
-      name: "weather",
-       title: "Weather"
-     },
-     {
-      name: "weather",
-       title: "Weather"
-     },
-     {
-      name: "weather",
-       title: "Weather"
-     }
-  ]
-  @Input() widgets: Widget[] = this.mock;
+  
+  @Input() widgets: Widget[];
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,18 @@
+.u-item-two-third{
+    width: 75%;
+}
+.u-item-one-third{
+   width: 25%;
+}
+.row__item{
+    display: flex;
+    width: 100%;
+}
+.content{
+    margin-top: 40px;
+    margin-right: 40px;
+    .title{
+        font-weight: bold;
+    }
+    font-size: 25px;
+}

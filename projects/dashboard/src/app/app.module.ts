@@ -13,7 +13,7 @@ import { WidgetModule } from 'projects/widget/src/public-api';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    WidgetModule
+    WidgetModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
