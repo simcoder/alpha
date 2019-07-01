@@ -1,20 +1,21 @@
 <router-outlet></router-outlet>
 <lib-header title="Dashboard"></lib-header>
-<div class="row__item">
-  <div class="u-item-one-third">
-    <lib-widget [widgets]="mockData"></lib-widget>
-  </div>
-  <mat-divider vertical="true"></mat-divider>
-  <div class="u-item-two-third content">
-    <div class="row__item title">
-      Welcome!
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell--span-3">
+          <lib-widget [widgets]="appMeta?.widgets"></lib-widget>
+      </div>
+      <div class="mdc-layout-grid__cell--span-9">
+        <div class="content">
+            <div class="mdc-layout-grid__cell title"><span >Welcome!</span></div>
+            <div class="mdc-layout-grid__cell"><span>
+                <p>
+                    {{ appMeta?.welcomeMessage }}
+                </p>
+            </span></div>
+        </div>
+          
+      </div>
     </div>
-    
-    <div class="row__item">
-      <p>
-        Welcome to your Resident Portal. Here you can make payments, submit tickets, and much more...
-      </p>
-    </div>
   </div>
-</div>
 
