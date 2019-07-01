@@ -1,38 +1,50 @@
-
 <router-outlet></router-outlet>
 <lib-header [title]="title"></lib-header>
-<div class="wrapper">
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out the amount</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Amount" formControlName="firstCtrl" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
+<div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell--span-12">
+      <mat-tab-group mat-stretch-tabs>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="icon__container">
+              <mat-icon inline="true" color="primary" fontSet="fas" fontIcon="fa-history">
+                History
+              </mat-icon>
             </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Method of Payment</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+          </ng-template>
+          <app-payment-history></app-payment-history>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="icon__container">
+              <mat-icon inline="true" fontSet="fas" fontIcon="fa-wallet">
+                Billing Info
+              </mat-icon>
             </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
+          </ng-template>
+          <app-billing-info></app-billing-info>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="icon__container">
+              <mat-icon inline="true" fontSet="fas" fontIcon="fa-credit-card">
+                Scheduled Payments
+              </mat-icon>
+            </div>
+          </ng-template>
+         <app-scheduled-payment></app-scheduled-payment>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="icon__container">
+              <mat-icon inline="true" fontSet="fas" fontIcon="fa-money-bill">
+                Make Payment
+              </mat-icon>
+            </div>
+          </ng-template>
+          <app-make-payment></app-make-payment>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
 </div>

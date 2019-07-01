@@ -8,12 +8,16 @@ import { Widget } from 'projects/widget/src/public-api';
 })
 export class AppComponent {
   title = 'dashboard';
-  mockData: Widget[] = [
-    {
-      name: "Payment",
-      metadata: {
-        amountDue: 1245
+  appMeta: any = {
+    widgets: [
+      {
+        name: "Payment",
+        metadata: {
+          amountDue: 1245
+        }
       }
-    }
-  ]
+    ],
+    welcomeMessage: "Welcome to your Resident Portal. Here you can make payments, submit tickets, and much more..."
+  }
+  
 }

@@ -36,6 +36,12 @@
       ],
       "header/*": [
         "dist/header/*"
+      ],
+      "table": [
+        "dist/table"
+      ],
+      "table/*": [
+        "dist/table/*"
       ]
     }
   }
