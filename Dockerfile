@@ -10,7 +10,7 @@ RUN npm install
 ARG env=production
 
 ## Build appHub
-RUN npm run build -- --aot --configuration=$env
+RUN npm run build -- --configuration=$env
 # ## Build payments
 # RUN npm run build payments -- --aot --configuration=$env
 # ## Build Dashboard
