@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'payments';
+  amountDue: number = 1234;
   constructor() {}
   ngOnInit() {}
 }

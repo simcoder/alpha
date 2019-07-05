@@ -7,3 +7,10 @@
 .icon__container{
     font-size: 20px;
 }
+.amount__due{
+    display: flex;
+    justify-content: center;
+    .due {
+        font-size: 40px;
+    }
+}

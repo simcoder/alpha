@@ -3,6 +3,22 @@
 <div class="mdc-layout-grid">
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell--span-12">
+      <div class="amount__due">
+        <mat-card>
+          <mat-card-header>
+              <mat-card-subtitle>Your Current Balance</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <span class="due" [ngStyle]="{'color': amountDue === 0 ? 'green' : 'red' }">
+              {{ amountDue | currency :'USD':'symbol':'1.2-2' }}
+            </span>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell--span-12">
       <mat-tab-group mat-stretch-tabs>
         <mat-tab>
           <ng-template mat-tab-label>
@@ -32,7 +48,7 @@
               </mat-icon>
             </div>
           </ng-template>
-         <app-scheduled-payment></app-scheduled-payment>
+          <app-scheduled-payment></app-scheduled-payment>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
@@ -47,4 +63,5 @@
       </mat-tab-group>
     </div>
   </div>
+
 </div>
