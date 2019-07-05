@@ -1,13 +1,20 @@
 <div>
     <div class="widget">
-            <mat-card *ngFor="let widget of widgets" class="widget__item">
-                    <div class="widget__header">
-                        <fa-icon [icon]="['fas', 'cog']"></fa-icon>
-                    </div>
-                    <mat-card-content>
-                        <div dynamicComponent [widget]="widget">
-                        </div>
-                    </mat-card-content>
-            </mat-card>
+        <mat-card *ngFor="let widget of widgets" class="widget__item">
+            <div class="widget__header">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <fa-icon [icon]="['fas', 'cog']"></fa-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <span>Remove</span>
+                    </button>
+                </mat-menu>
+            </div>
+            <mat-card-content>
+                <div dynamicComponent [widget]="widget">
+                </div>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

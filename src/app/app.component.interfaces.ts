@@ -1,6 +1,6 @@
 export interface Menu {
     name: string;
-    route: string;
+    route: any;
     icon?: string;
     selectedClass?: string;
     featureFlag: boolean;

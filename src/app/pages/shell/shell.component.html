@@ -1,0 +1,51 @@
+<div [ngClass]="defaultTheme">
+  <div class="header">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <div class="header__row">
+          <div class="menu__toggle">
+            <button type="button" mat-button (click)="drawer.toggle()">
+              <fa-icon [icon]="hamburger"></fa-icon>
+            </button>
+          </div>
+          <div>
+            <mat-slide-toggle color="secondary" checked="false" (change)="onThemSwitch($event)">
+            </mat-slide-toggle>
+          </div>
+          <div>
+             <div class="row">
+              <div class="notification">
+                  <mat-icon matBadge="15" matBadgeColor="warn" fontSet="fas" fontIcon="fa-bell"></mat-icon>
+              </div>
+              <div>
+                  <ngx-auth-firebaseui-avatar (onSignOut)="onSignOut($even)"></ngx-auth-firebaseui-avatar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="content">
+    <mat-drawer-container autosize>
+      <mat-drawer #drawer mode="side">
+            <mat-list>
+                <mat-list-item  *ngFor="let menuItem of sideMenu$ | async">
+                    <mat-icon fontSet="fas" fontIcon="{{menuItem.icon}}"></mat-icon>
+                    <button  [routerLink]="menuItem.route" *ngIf="menuItem.featureFlag" type="button" mat-button
+                    [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
+                    {{ menuItem.name }}
+                   </button>
+                   <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list>
+      </mat-drawer>
+      <div class="inner-content">
+        <router-outlet name="details"></router-outlet>
+      </div>
+      <footer class="footer">
+          <p>copyright &copy; 2019 GOC, Inc. All rights reserved.</p>
+        </footer>
+    </mat-drawer-container>
+  </div>
+</div>

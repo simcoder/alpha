@@ -2,21 +2,21 @@ import { BehaviorSubject } from 'rxjs';
 import { AppMetadata, Menu } from './app.component.interfaces';
 const menu: Menu[] = [
     { name: "Dashboard", 
-      route: "/dashboard", 
+      route: [{ outlets: { details:['dashboard'] } }], 
       selectedClass: "primary",
       featureFlag: true,
       icon:"fa-tachometer-alt" 
     },
     { 
       name: "Payments", 
-      route: "/payments", 
+      route: [{ outlets: { details:['payments'] } }], 
       selectedClass: null,
       featureFlag: true,
       icon:"fa-money-bill-alt" 
     },
     { 
       name: "Maintenance", 
-      route: "/maintenance", 
+      route: [{ outlets: { details:['maintenance'] } }], 
       selectedClass: null,
       featureFlag: true ,
       icon:"fa-toolbox" 

@@ -9,6 +9,7 @@ import { MaterialModule } from './material.module';
 import { SelectComponent } from './components/select/select.component';
 import { DynamicFieldDirective } from './directives/dynamic-field.directive';
 import { CommonModule } from '@angular/common';
+import { RadioButtonComponent } from './components/radio-button/radio-button.component';
 
 @NgModule({
   declarations: [DynamicFormComponent, 
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
                  SelectComponent, 
                  DateComponent, 
                  CheckboxComponent, 
-                 DynamicFieldDirective],
+                 DynamicFieldDirective, 
+                 RadioButtonComponent],
   imports: [
     ReactiveFormsModule,
     FormsModule,
@@ -29,7 +31,8 @@ import { CommonModule } from '@angular/common';
     ButtonComponent,
     SelectComponent,
     DateComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    RadioButtonComponent
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   exports: [DynamicFormComponent, 
@@ -38,6 +41,7 @@ import { CommonModule } from '@angular/common';
             SelectComponent, 
             DateComponent, 
             CheckboxComponent, 
-            DynamicFieldDirective]
+            DynamicFieldDirective,
+            RadioButtonComponent]
 })
 export class DynamicFormModule { }
