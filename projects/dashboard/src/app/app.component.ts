@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Widget } from 'projects/widget/src/public-api';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,13 @@ export class AppComponent {
       }
     ],
     welcomeMessage: "Welcome to your Resident Portal. Here you can make payments, submit tickets, and much more..."
+  }
+  displayName: string;
+
+  constructor(public afa: AngularFireAuth){
+    afa.user.subscribe((user: User) => {
+      this.displayName = user ? user.displayName : null;
+    });
   }
   
 }

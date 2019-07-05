@@ -55,7 +55,7 @@ export class ShellComponent implements OnInit {
     ]);
   }
 
-  onSignOut(event){
+  onSignOut(){
     this.router.navigate(['']);
   }
 

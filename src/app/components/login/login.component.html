@@ -9,7 +9,7 @@
                     [providers]="[providers.Google]" 
                     [guestEnabled]="false" 
                     (onSuccess)="onSuccess($event)"
-                    (onError)="printError($event)">
+                    (onError)="onError($event)">
                 </ngx-auth-firebaseui>
             </mat-card-content>
         </mat-card>
