@@ -29,7 +29,7 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-auth-firebaseui/assets/",
                 "output": "./assets/"
-                }
+              }
             ],
             "styles": [
               "src/styles.scss",
@@ -629,6 +629,41 @@
             "tsConfig": [
               "projects/table/tsconfig.lib.json",
               "projects/table/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "user-preferences": {
+      "root": "projects/user-preferences",
+      "sourceRoot": "projects/user-preferences/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/user-preferences/tsconfig.lib.json",
+            "project": "projects/user-preferences/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/user-preferences/src/test.ts",
+            "tsConfig": "projects/user-preferences/tsconfig.spec.json",
+            "karmaConfig": "projects/user-preferences/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/user-preferences/tsconfig.lib.json",
+              "projects/user-preferences/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

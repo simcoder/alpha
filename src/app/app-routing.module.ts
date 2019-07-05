@@ -7,8 +7,42 @@ import { DashboardModule } from 'projects/dashboard/src/app/dashboard.module';
 import { LoginComponent } from './components/login/login.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import {LoggedInGuard} from 'ngx-auth-firebaseui';
+import { environment } from '../environments/environment';
 
-
+const routesWithoutAuth: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: ShellComponent,
+    children: [
+      {
+        path: 'payments',
+        loadChildren: "../../projects/payments/src/app/app.module#PaymentAppModule",
+        outlet: 'details'
+      },
+      {
+        path: 'maintenance',
+        loadChildren: "../../projects/maintenance/src/app/app.module#AppModule",
+        outlet: 'details'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: "../../projects/dashboard/src/app/dashboard.module#DashboardModule",
+        outlet: 'details'
+      }
+    ]
+  },
+  { path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  { path: '**', 
+    component: NoModuleComponent
+  }
+];
 const routes: Routes = [
   {
     path: 'login',
@@ -49,7 +83,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing:true})],
+  imports: [RouterModule.forRoot(environment.production ? routes : routesWithoutAuth, {enableTracing:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

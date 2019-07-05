@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   onSuccess(user){
     this.router.navigate(['home']);
   }
-  onError(){
+  onError(event){
     debugger;
   }
   ngOnInit() {

@@ -42,6 +42,12 @@
       ],
       "table/*": [
         "dist/table/*"
+      ],
+      "user-preferences": [
+        "dist/user-preferences"
+      ],
+      "user-preferences/*": [
+        "dist/user-preferences/*"
       ]
     }
   }
