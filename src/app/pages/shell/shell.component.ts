@@ -18,10 +18,6 @@ export class ShellComponent implements OnInit {
   ngDestroy$: Subject<boolean> = new Subject();
   @HostBinding('style.width') width: Number;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.changeMenuItemWidthMobileview();
-  }
 
   profile: any;
   title = 'ROAM';
@@ -41,13 +37,13 @@ export class ShellComponent implements OnInit {
     });
     router.events.subscribe((route: any) => {
       if (route.url && this.sideMenu$.getValue()) {
-        const menuName: string = route.url.toString().replace('/', '');
-        this.toggleActiveMenu(menuName);
+        this.toggleActiveMenu(route.url.toString());
       }
     });
   }
 
   ngOnInit(): void {
+    //naviga for now to dashboard on load by default
     this.router.navigate(
       [
         { preserveFragment: true },
@@ -57,11 +53,6 @@ export class ShellComponent implements OnInit {
           }
         }
     ]);
-    //this.auth.handleAuthentication();
-    this.changeMenuItemWidthMobileview();
-    // this.auth.userProfile$.pipe(takeUntil(this.ngDestroy$)).subscribe(profile => {
-    //   this.profile = profile;
-    // })
   }
 
   onSignOut(event){
@@ -77,28 +68,15 @@ export class ShellComponent implements OnInit {
     this.overlayContainer.getContainerElement().classList.add(this.defaultTheme);
   }
 
-  changeMenuItemWidthMobileview(): void {
-    if (this.isMobile) {
-      //portrait only
-      if (window.innerHeight > window.innerWidth) {
-        const mobileScreen = window.innerWidth;
-        this.width = mobileScreen;
-      }
-    }
-  }
-
   onClickMenuItem(drawer: any, selectedItem: Menu): void {
-    // if (this.auth.isAuthenticated()) {
-    //   drawer.toggle();
-    //   this.toggleActiveMenu(selectedItem.name);
-    // }
+    this.toggleActiveMenu(selectedItem.name);
   }
 
   toggleActiveMenu(selectedMenu: string): void {
     const newMenu: Menu[] = this.sideMenu$.getValue();
     newMenu.forEach(item => {
       item.selectedClass = null;
-      if (item.name.toLowerCase() === selectedMenu) {
+      if (selectedMenu.includes(item.name.toLowerCase())) {
         item.selectedClass = "primary";
       }
     });

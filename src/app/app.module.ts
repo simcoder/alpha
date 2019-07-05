@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatIconModule, MatListModule, MatDividerModule, MatCardModule } from '@angular/material';
+import { MatIconModule, MatListModule, MatDividerModule, MatCardModule, MatTooltipModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -18,6 +18,7 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { LoginComponent } from './components/login/login.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import {MatPagesModule} from '@angular-material-extensions/pages';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 export function firebaseAppNameFactory() {
   return `property-management-advisor`;
@@ -28,7 +29,8 @@ export function firebaseAppNameFactory() {
     AppComponent,
     NoModuleComponent,
     LoginComponent,
-    ShellComponent
+    ShellComponent,
+    AvatarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ export function firebaseAppNameFactory() {
     MatButtonModule,
     AppRoutingModule,
     MatSidenavModule,
+    MatTooltipModule,
     MatToolbarModule,
     MatSlideToggleModule,
     MatMenuModule,

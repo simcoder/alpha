@@ -22,17 +22,20 @@ const routes: Routes = [
       {
         path: 'payments',
         loadChildren: "../../projects/payments/src/app/app.module#PaymentAppModule",
-        outlet: 'details'
+        outlet: 'details',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'maintenance',
         loadChildren: "../../projects/maintenance/src/app/app.module#AppModule",
-        outlet: 'details'
+        outlet: 'details',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'dashboard',
         loadChildren: "../../projects/dashboard/src/app/dashboard.module#DashboardModule",
-        outlet: 'details'
+        outlet: 'details',
+        canActivate: [LoggedInGuard]
       }
     ]
   },

@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DynamicFormModule } from 'projects/dynamic-form/src/public-api';
 import {MatStepperModule} from '@angular/material/stepper';
-import { MatButtonModule, MatInputModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MakePaymentComponent } from './components/make-payment/make-payment.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
@@ -30,6 +30,7 @@ import { ScheduledPaymentComponent } from './components/scheduled-payment/schedu
     MatStepperModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCardModule,
     MatInputModule,
     HeaderModule,
     MatTabsModule,
