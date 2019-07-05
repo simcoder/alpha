@@ -1,8 +1,9 @@
+import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 import { WeatherComponent } from './widgets/weather/weather.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { WidgetComponent } from './widget.component';
-import { MatCardModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { DynamicComponentDirective } from './directives/dynamic-component.directive';
 import { NoWidgetComponent } from './widgets/no-widget/no-widget.component';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -25,7 +26,10 @@ import { RouterModule } from '@angular/router';
     CdkTableModule,
     FontAwesomeModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule
   ],
   entryComponents: [WeatherComponent, NoWidgetComponent, PaymentComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

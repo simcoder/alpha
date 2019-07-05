@@ -1,3 +1,17 @@
-<div  #container>
+<div [ngClass]="defaultTheme" class="wrapper">
+    <div class="content">
+        <mat-card>
+            <mat-card-content>
+                <ngx-auth-firebaseui 
+                    tosUrl="/legal/tos" 
+                    privacyPolicyUrl="/legal/privacy"
+                    [tabIndex]="1" 
+                    [providers]="[providers.Google]" 
+                    [guestEnabled]="false" 
+                    (onSuccess)="onSuccess($event)"
+                    (onError)="printError($event)">
+                </ngx-auth-firebaseui>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
-

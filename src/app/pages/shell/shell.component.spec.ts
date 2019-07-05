@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CallbackComponent } from './callback.component';
+import { ShellComponent } from './shell.component';
 
-describe('CallbackComponent', () => {
-  let component: CallbackComponent;
-  let fixture: ComponentFixture<CallbackComponent>;
+describe('ShellComponent', () => {
+  let component: ShellComponent;
+  let fixture: ComponentFixture<ShellComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CallbackComponent ]
+      declarations: [ ShellComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CallbackComponent);
+    fixture = TestBed.createComponent(ShellComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
