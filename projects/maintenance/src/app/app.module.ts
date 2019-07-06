@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
-import { HeaderModule } from 'projects/header/src/public-api';
+import { HeaderModule } from 'libs/components/header/src/public-api';
 
 @NgModule({
   declarations: [

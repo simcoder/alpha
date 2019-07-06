@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Widget } from 'projects/widget/src/public-api';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 

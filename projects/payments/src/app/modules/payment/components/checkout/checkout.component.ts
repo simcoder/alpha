@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireFunctions } from '@angular/fire/functions';
+
 import { environment } from '../../../../../environments/environment';
 import { PaymentService } from '../../services/payment.service';
 
@@ -28,19 +27,6 @@ export class CheckoutComponent implements OnInit {
         this.paymentService.processPayment(token, this.amount)
       }
     });
-    // this.handler = StripeCheckout.configure({
-    //   key: environment.stripeKey,
-    //   locale: 'auto',
-    //   source: async (source)=>{
-    //     // this.auth.user.subscribe(async (user: any) => {
-    //     //   debugger;
-    //     //   this.user = user;
-          
-    //     // });
-    //     const fun = this.functions.httpsCallable('stripeCreateCharge');
-    //     this.confirmation = await fun({source: source.id, uid: 'fdfdf', amount: this.amount }).toPromise()
-    //   }
-    // })
   }
 
   async checkout(e) {
@@ -56,6 +42,4 @@ export class CheckoutComponent implements OnInit {
   onPopstate() {
     this.handler.close();
   }
-
-
 }
