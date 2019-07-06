@@ -498,32 +498,32 @@
       }
     },
     "dynamic-form": {
-      "root": "projects/dynamic-form",
-      "sourceRoot": "projects/dynamic-form/src",
+      "root": "libs/components/dynamic-form",
+      "sourceRoot": "libs/components/dynamic-form/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/dynamic-form/tsconfig.lib.json",
-            "project": "projects/dynamic-form/ng-package.json"
+            "tsConfig": "libs/components/dynamic-form/tsconfig.lib.json",
+            "project": "libs/components/dynamic-form/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/dynamic-form/src/test.ts",
-            "tsConfig": "projects/dynamic-form/tsconfig.spec.json",
-            "karmaConfig": "projects/dynamic-form/karma.conf.js"
+            "main": "libs/components/dynamic-form/src/test.ts",
+            "tsConfig": "libs/components/dynamic-form/tsconfig.spec.json",
+            "karmaConfig": "libs/components/dynamic-form/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/dynamic-form/tsconfig.lib.json",
-              "projects/dynamic-form/tsconfig.spec.json"
+              "libs/components/dynamic-form/tsconfig.lib.json",
+              "libs/components/dynamic-form/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -533,32 +533,32 @@
       }
     },
     "widget": {
-      "root": "projects/widget",
-      "sourceRoot": "projects/widget/src",
+      "root": "libs/components/widget",
+      "sourceRoot": "libs/components/widget/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/widget/tsconfig.lib.json",
-            "project": "projects/widget/ng-package.json"
+            "tsConfig": "libs/components/widget/tsconfig.lib.json",
+            "project": "libs/components/widget/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/widget/src/test.ts",
-            "tsConfig": "projects/widget/tsconfig.spec.json",
-            "karmaConfig": "projects/widget/karma.conf.js"
+            "main": "libs/components/widget/src/test.ts",
+            "tsConfig": "libs/components/widget/tsconfig.spec.json",
+            "karmaConfig": "libs/components/widget/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/widget/tsconfig.lib.json",
-              "projects/widget/tsconfig.spec.json"
+              "libs/components/widget/tsconfig.lib.json",
+              "libs/components/widget/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -568,32 +568,32 @@
       }
     },
     "header": {
-      "root": "projects/header",
-      "sourceRoot": "projects/header/src",
+      "root": "libs/components/header",
+      "sourceRoot": "libs/components/header/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/header/tsconfig.lib.json",
-            "project": "projects/header/ng-package.json"
+            "tsConfig": "libs/components/header/tsconfig.lib.json",
+            "project": "libs/components/header/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/header/src/test.ts",
-            "tsConfig": "projects/header/tsconfig.spec.json",
-            "karmaConfig": "projects/header/karma.conf.js"
+            "main": "libs/components/header/src/test.ts",
+            "tsConfig": "libs/components/header/tsconfig.spec.json",
+            "karmaConfig": "libs/components/header/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/header/tsconfig.lib.json",
-              "projects/header/tsconfig.spec.json"
+              "libs/components/header/tsconfig.lib.json",
+              "libs/components/header/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -603,32 +603,32 @@
       }
     },
     "table": {
-      "root": "projects/table",
-      "sourceRoot": "projects/table/src",
+      "root": "libs/components/table",
+      "sourceRoot": "libs/components/table/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/table/tsconfig.lib.json",
-            "project": "projects/table/ng-package.json"
+            "tsConfig": "libs/components/table/tsconfig.lib.json",
+            "project": "libs/components/table/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/table/src/test.ts",
-            "tsConfig": "projects/table/tsconfig.spec.json",
-            "karmaConfig": "projects/table/karma.conf.js"
+            "main": "libs/components/table/src/test.ts",
+            "tsConfig": "libs/components/table/tsconfig.spec.json",
+            "karmaConfig": "libs/components/table/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/table/tsconfig.lib.json",
-              "projects/table/tsconfig.spec.json"
+              "libs/components/table/tsconfig.lib.json",
+              "libs/components/table/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

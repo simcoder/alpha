@@ -4,9 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WidgetModule } from 'projects/widget/src/public-api';
-import { HeaderModule } from 'projects/header/src/public-api';
 import {MatDividerModule} from '@angular/material/divider';
+import { WidgetModule } from 'libs/components/widget/src/public-api';
+import { HeaderModule } from 'libs/components/header/src/public-api';
 
 
 

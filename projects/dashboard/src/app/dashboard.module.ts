@@ -4,9 +4,9 @@ import { AppComponent } from './app.component';
 import { AppChildRoutingModule } from './app-routing.child.module';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WidgetModule } from 'projects/widget/src/public-api';
-import { HeaderModule } from 'projects/header/src/lib/header.module';
 import { MatDividerModule } from '@angular/material';
+import { WidgetModule } from 'libs/components/widget/src/public-api';
+import { HeaderModule } from 'libs/components/header/src/public-api';
 
 @NgModule({
   declarations: [
