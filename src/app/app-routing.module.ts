@@ -83,7 +83,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(environment.production ? routes : routesWithoutAuth, {enableTracing:true})],
+  imports: [RouterModule.forRoot(environment.production ? routes : routes, {enableTracing:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

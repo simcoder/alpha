@@ -19,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import {MatPagesModule} from '@angular-material-extensions/pages';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 export function firebaseAppNameFactory() {
   return `property-management-advisor`;
@@ -44,7 +45,6 @@ export function firebaseAppNameFactory() {
     MatMenuModule,
     FontAwesomeModule,
     MatPagesModule.forRoot(),
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     MatIconModule,
     MatBadgeModule,
     MatListModule,
@@ -59,7 +59,7 @@ export function firebaseAppNameFactory() {
         authGuardFallbackURL: '/login',
         toastMessageOnAuthSuccess: false,
         toastMessageOnAuthError: true
-      }),
+      })
   ],
   entryComponents:[],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
