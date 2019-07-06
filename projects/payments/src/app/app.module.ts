@@ -13,6 +13,7 @@ import { MakePaymentComponent } from './components/make-payment/make-payment.com
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import {MatTableModule} from '@angular/material/table';
 import { ScheduledPaymentComponent } from './components/scheduled-payment/scheduled-payment.component';
+import { PaymentModule } from './modules/payment/payment.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ScheduledPaymentComponent } from './components/scheduled-payment/schedu
     HeaderModule,
     MatTabsModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    PaymentModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
