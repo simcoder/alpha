@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
+declare var Stripe//: stripe.StripeStatic;
 
 @Component({
   selector: 'app-credit-card-payment',
@@ -14,7 +15,7 @@ export class CreditCardPaymentComponent implements OnInit {
   @ViewChild('cardElement', null) cardElement: ElementRef;
   constructor(private paymentService: PaymentService) { }
 
-  stripe; // : stripe.Stripe;
+  stripe; //: stripe.Stripe;
   card;
   cardErrors;
 

@@ -3,7 +3,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { PaymentService } from '../../services/payment.service';
 
- declare var StripeCheckout: StripeCheckoutStatic;
+ declare var StripeCheckout//: StripeCheckoutStatic;
 
 @Component({
   selector: 'app-checkout',
@@ -12,10 +12,10 @@ import { PaymentService } from '../../services/payment.service';
 })
 export class CheckoutComponent implements OnInit {
   
-  handler: StripeCheckoutHandler;
+  handler//: StripeCheckoutHandler;
   confirmation: any;
   user:any
-  @Input() amount = 500;
+  @Input() amount = 0;
   constructor(private paymentService: PaymentService) { }
 
   ngOnInit() {
