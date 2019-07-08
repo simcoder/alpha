@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
+import { AngularFireFunctions } from '@angular/fire/functions';
 declare var Stripe//: stripe.StripeStatic;
 
 @Component({
@@ -13,7 +14,9 @@ export class CreditCardPaymentComponent implements OnInit {
   @Input() amount: number = 500;
   @Input() description: string;
   @ViewChild('cardElement', null) cardElement: ElementRef;
-  constructor(private paymentService: PaymentService) { }
+  constructor(private paymentService: PaymentService, private functions: AngularFireFunctions) {
+    
+   }
 
   stripe; //: stripe.Stripe;
   card;
@@ -24,6 +27,7 @@ export class CreditCardPaymentComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.stripe = Stripe(environment.stripeKey);
     const elements = this.stripe.elements();
 
@@ -37,15 +41,17 @@ export class CreditCardPaymentComponent implements OnInit {
 
   async handleForm(e) {
     e.preventDefault();
-    debugger;
-    //const { source, error } = await this.stripe.createSource(this.card);
-    this.stripe.createToken(this.card).then(result=>{
-      debugger;
-      if (result.error) {
+    
+    const { source, error } = await this.stripe.createSource(this.card);
+    this.stripe.createToken(this.card).then(async source=>{
+     
+      if (source.error) {
         
       } else {
-        // Send the token to your server.
-        this.paymentService.processPayment(result.token, this.amount);
+        const fun = this.functions.httpsCallable('stripeCharge');
+        this.confirmation = await fun({ source, uid: this.paymentService.userId, amount: this.amount }).toPromise();
+        console.log(this.confirmation);
+        
       }
     })
   }

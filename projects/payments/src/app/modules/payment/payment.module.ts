@@ -1,18 +1,36 @@
-import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AngularFireFunctions } from '@angular/fire/functions';
 import { PaymentService } from './services/payment.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { CreditCardPaymentComponent } from './components/credit-card-payment/credit-card-payment.component';
 import { AchPaymentComponent } from './components/ach-payment/ach-payment.component';
+import { NgxPlaidLinkModule } from "ngx-plaid-link";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule, MatButtonModule } from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+import { SavedPaymentComponent } from './components/saved-payment/saved-payment.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgxPlaidLinkModule,
+    MatFormFieldModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDividerModule
   ],
-  declarations: [CreditCardPaymentComponent, AchPaymentComponent, CheckoutComponent],
-  exports: [CreditCardPaymentComponent, AchPaymentComponent, CheckoutComponent],
+  declarations: [CreditCardPaymentComponent, AchPaymentComponent, SavedPaymentComponent],
+  exports: [CreditCardPaymentComponent, AchPaymentComponent, SavedPaymentComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AngularFireFunctions, PaymentService, AngularFireDatabase]
 })
 export class PaymentModule { }

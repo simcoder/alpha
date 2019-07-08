@@ -1,0 +1,32 @@
+@import "~@material/layout-grid/mdc-layout-grid";
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+   
+    .ach-form {
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+        margin-bottom: 40px;
+    }
+
+    .ach-form>* {
+        width: 100%;
+    }
+}
+.divider{
+    align-items: center;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.plaid {
+    align-items: center;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
