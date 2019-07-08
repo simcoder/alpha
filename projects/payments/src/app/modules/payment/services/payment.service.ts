@@ -1,6 +1,6 @@
-import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Injectable()
 export class PaymentService {
@@ -8,7 +8,7 @@ export class PaymentService {
   userId: string;
   userEmail: string;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(private functions: AngularFireFunctions, private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe((auth) => {
       if (auth) {
         this.userId = auth.uid;
@@ -16,11 +16,4 @@ export class PaymentService {
       }
     });
   }
-
-
-   processPayment(token: any, amount: number) {
-     const payment = { token, amount }
-     return this.db.list(`/payments/${this.userId}`).push(payment)
-   }
-
 }

@@ -19,8 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import {MatPagesModule} from '@angular-material-extensions/pages';
 import { AvatarComponent } from './components/avatar/avatar.component';
-import { AngularFireAuth } from '@angular/fire/auth';
-
+import { AngularFireFunctionsModule, FUNCTIONS_ORIGIN } from '@angular/fire/functions';
 export function firebaseAppNameFactory() {
   return `property-management-advisor`;
 }
@@ -52,6 +51,7 @@ export function firebaseAppNameFactory() {
     MatCardModule,
     BrowserModule.withServerTransition({appId: 'property-management-advisor'}),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireFunctionsModule,
     NgxAuthFirebaseUIModule.forRoot(environment.firebase, firebaseAppNameFactory,
       {
         
@@ -63,7 +63,7 @@ export function firebaseAppNameFactory() {
   ],
   entryComponents:[],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  //providers: [{ provide: FUNCTIONS_ORIGIN, useValue: 'http://localhost:5000' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

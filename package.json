@@ -47,6 +47,7 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
     "ngx-auth-firebaseui": "^3.0.1",
+    "ngx-plaid-link": "^1.0.2",
     "node-sass": "^4.12.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

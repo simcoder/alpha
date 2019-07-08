@@ -1,0 +1,43 @@
+[debug] [2019-07-06T20:38:57.516Z] ----------------------------------------------------------------------
+[debug] [2019-07-06T20:38:57.518Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting,functions
+[debug] [2019-07-06T20:38:57.519Z] CLI Version:   7.0.2
+[debug] [2019-07-06T20:38:57.519Z] Platform:      darwin
+[debug] [2019-07-06T20:38:57.519Z] Node Version:  v8.11.4
+[debug] [2019-07-06T20:38:57.519Z] Time:          Sat Jul 06 2019 15:38:57 GMT-0500 (CDT)
+[debug] [2019-07-06T20:38:57.519Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-06T20:38:57.530Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-06T20:38:57.530Z] > authorizing via signed-in user
+[debug] [2019-07-06T20:38:57.530Z] [iam] checking project property-management-advisor for permissions ["firebase.projects.get"]
+[debug] [2019-07-06T20:38:57.532Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/property-management-advisor:testIamPermissions  
+
+[debug] [2019-07-06T20:38:57.827Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-06T20:38:57.829Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/property-management-advisor  
+ 
+[debug] [2019-07-06T20:38:58.019Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Using node@8 from host.
+[debug] [2019-07-06T20:38:58.026Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/949522077085/clients/_:getWebAppConfig  
+ 
+[debug] [2019-07-06T20:38:58.027Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/949522077085:getServerAppConfig  
+ 
+[debug] [2019-07-06T20:38:58.374Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5001
+[debug] [2019-07-06T20:38:58.524Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "/Users/robinsonaizprua/Documents/GOC/alpha/functions" for Cloud Functions...
+[info] i  hosting: Serving hosting files from: dist
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-07-06T20:38:58.941Z] Functions runtime initialized.
+[debug] [2019-07-06T20:38:58.941Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-06T20:38:59.122Z] firebase-admin has been stubbed.
+[warn] ⚠  TypeError: Cannot read property 'testkey' of undefined
+    at Object.<anonymous> (/Users/robinsonaizprua/Documents/GOC/alpha/functions/index.js:52:59)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at /usr/local/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:582:33
+    at Generator.next (<anonymous>)
+[warn] ⚠  We were unable to load your functions code. (see above)
