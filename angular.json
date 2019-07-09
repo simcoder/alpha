@@ -637,33 +637,68 @@
         }
       }
     },
-    "user-preferences": {
-      "root": "projects/user-preferences",
-      "sourceRoot": "projects/user-preferences/src",
+    "overlay-spinner": {
+      "root": "libs/components/overlay-spinner",
+      "sourceRoot": "libs/components/overlay-spinner/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/user-preferences/tsconfig.lib.json",
-            "project": "projects/user-preferences/ng-package.json"
+            "tsConfig": "libs/components/overlay-spinner/tsconfig.lib.json",
+            "project": "libs/components/overlay-spinner/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/user-preferences/src/test.ts",
-            "tsConfig": "projects/user-preferences/tsconfig.spec.json",
-            "karmaConfig": "projects/user-preferences/karma.conf.js"
+            "main": "libs/components/overlay-spinner/src/test.ts",
+            "tsConfig": "libs/components/overlay-spinner/tsconfig.spec.json",
+            "karmaConfig": "libs/components/overlay-spinner/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/user-preferences/tsconfig.lib.json",
-              "projects/user-preferences/tsconfig.spec.json"
+              "libs/components/overlay-spinner/tsconfig.lib.json",
+              "libs/components/overlay-spinner/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "notification": {
+      "root": "libs/components/notification",
+      "sourceRoot": "libs/components/notification/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/components/notification/tsconfig.lib.json",
+            "project": "libs/components/notification/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/components/notification/src/test.ts",
+            "tsConfig": "libs/components/notification/tsconfig.spec.json",
+            "karmaConfig": "libs/components/notification/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/components/notification/tsconfig.lib.json",
+              "libs/components/notification/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

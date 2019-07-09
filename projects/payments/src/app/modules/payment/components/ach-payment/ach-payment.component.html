@@ -1,48 +1,11 @@
 <div class="mdc-layout-grid">
   <div class="mdc-layout-grid__inner">
-    <div class="mdc-layout-grid__cell--span-5">
-        <div class="plaid">
-            <mr-ngx-plaid-link-button 
-              [env]="plaidEnvironment" 
-              [publicKey]="publicKey" 
-              institution=""
-              [countryCodes]="['US', 'CA', 'GB']" 
-              (Success)="onPlaidSuccess($event)" 
-              (Exit)="onPlaidExit($event)"
-              (Load)="onPlaidLoad($event)" 
-              (Event)="onPlaidEvent($event)" 
-              (Click)="onPlaidClick($event)"
-               className="launch-plaid-link-button" 
-               buttonText="Link Your Bank Account">
-            </mr-ngx-plaid-link-button>
-        </div>
-    </div>
-    <div class="mdc-layout-grid__cell--span-1">
-      <div class="divider">
-         or
+    <div class="mdc-layout-grid__cell--span-12">
+      <div *ngIf="verifiedPayment == undefined else savedPayment;">
+        <app-link-bank-account (verifiedPayment)="handleVerifiedPayment($event)"></app-link-bank-account>
       </div>
-    </div>
-    <div class="mdc-layout-grid__cell--span-5">
-        <form class="wrapper" [formGroup]="achForm" (submit)="handleForm($event)">
-            <div class="ach-form">
-              <mat-form-field>
-                <input formControlName="name" matInput placeholder="Account Holder's Name">
-              </mat-form-field>
-              <mat-form-field>
-                <input formControlName="routingNumber" matInput placeholder="Routing Number">
-              </mat-form-field>
-              <mat-form-field>
-                <input formControlName="accountNumber" matInput placeholder="Account Number">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-select placeholder="Type">
-                  <mat-option value="option">Individual</mat-option>
-                  <mat-option value="option">Business</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <button mat-raised-button color="primary" type="submit">save</button>
-            </div>
-          </form>
+      <ng-template #savedPayment>
+        <app-saved-payment [payment]="verifiedPayment"></app-saved-payment>
+      </ng-template>
     </div>
   </div>
-</div>

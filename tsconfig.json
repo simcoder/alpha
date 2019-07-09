@@ -48,6 +48,18 @@
       ],
       "user-preferences/*": [
         "dist/user-preferences/*"
+      ],
+      "overlay-spinner": [
+        "dist/overlay-spinner"
+      ],
+      "overlay-spinner/*": [
+        "dist/overlay-spinner/*"
+      ],
+      "notification": [
+        "dist/notification"
+      ],
+      "notification/*": [
+        "dist/notification/*"
       ]
     }
   }

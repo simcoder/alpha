@@ -1,11 +1,19 @@
-
-<div class="wrapper" >
+<div class="wrapper">
     <mat-card>
         <mat-card-header>
-            <mat-card-subtitle>{{payment?.account.name}} - {{payment?.account.type}}</mat-card-subtitle>
+            <mat-card-title>
+                <mat-icon inline="true" color="primary" fontSet="fas" fontIcon="fa-money-check-alt">
+                    e-check
+                </mat-icon>
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{payment?.account?.name}} - {{payment?.account?.type}}
+            </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            {{payment?.account.mask}}
+            <div style="margin:20px;">
+                    {{payment?.account?.mask}}
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

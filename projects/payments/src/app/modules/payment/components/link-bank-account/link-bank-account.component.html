@@ -1,0 +1,11 @@
+<div class="plaid">
+    <mr-ngx-plaid-link-button 
+      [env]="plaidEnvironment" 
+      [publicKey]="publicKey" 
+      institution=""
+      [countryCodes]="['US', 'CA', 'GB']" 
+      (Success)="onPlaidSuccess($event)" 
+       [style]="achLinkButtonStyle"
+       buttonText="Link Your Bank Account">
+    </mr-ngx-plaid-link-button>
+</div>
