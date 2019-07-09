@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
+export const paymentAmount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 @Component({
   selector: 'app-make-payment',
@@ -8,17 +10,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class MakePaymentComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  paymentAmountForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    this.paymentAmountForm = this.formBuilder.group({
+      amount: ['', Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+  }
+
+  onChange(event){
+    console.log(this.paymentAmountForm.controls['amount'].value);
+    paymentAmount$.next( this.paymentAmountForm.controls['amount'].value);
   }
 
 }

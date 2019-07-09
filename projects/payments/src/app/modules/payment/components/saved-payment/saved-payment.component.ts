@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: 'app-saved-payment',
@@ -7,14 +6,10 @@ import { AngularFireFunctions } from '@angular/fire/functions';
   styleUrls: ['./saved-payment.component.scss']
 })
 export class SavedPaymentComponent implements OnInit {
-  payment: any;
-  constructor( private functions: AngularFireFunctions) { }
+  @Input() payment: any;
+  
+  constructor() { }
 
-  async ngOnInit() {
-    const getCustomerPaymentsFunction = this.functions.httpsCallable('getCustomerPayments');
-    this.payment = await getCustomerPaymentsFunction({}).toPromise();
-    console.log(this.payment.account);
-
-  }
+  async ngOnInit() {}
 
 }

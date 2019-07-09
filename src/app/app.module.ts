@@ -20,6 +20,8 @@ import { ShellComponent } from './pages/shell/shell.component';
 import {MatPagesModule} from '@angular-material-extensions/pages';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { AngularFireFunctionsModule, FUNCTIONS_ORIGIN } from '@angular/fire/functions';
+import { OverlaySpinnerModule } from 'libs/components/overlay-spinner/src/lib/overlay-spinner.module';
+import { NotificationModule } from 'libs/components/notification/src/public-api';
 export function firebaseAppNameFactory() {
   return `property-management-advisor`;
 }
@@ -34,11 +36,13 @@ export function firebaseAppNameFactory() {
   ],
   imports: [
     BrowserModule,
+    OverlaySpinnerModule,
     BrowserAnimationsModule,
     MatButtonModule,
     AppRoutingModule,
     MatSidenavModule,
     MatTooltipModule,
+    NotificationModule,
     MatToolbarModule,
     MatSlideToggleModule,
     MatMenuModule,
