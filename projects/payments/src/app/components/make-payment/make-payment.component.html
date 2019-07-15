@@ -1,35 +1,42 @@
-
 <div class="wrapper">
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-            <ng-template matStepLabel>Fill out the amount</ng-template>
-            <form [formGroup]="paymentAmountForm">
-                <mat-form-field>
-                    <input (change)="onChange($event)" formControlName="amount" matInput placeholder="Amount" type="number" class="example-right-align">
-                    <span matPrefix>$&nbsp;</span>
-                    <span matSuffix>.00</span>
-                </mat-form-field>
-            </form>
-          <div>
-            <button mat-button matStepperNext>Next</button>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="paymentAmountForm">
+      <div class="step amount">
+        <ng-template matStepLabel>Fill out the amount</ng-template>
+        <form [formGroup]="paymentAmountForm">
+          <div class="form-container">
+              <mat-form-field>
+                  <input (change)="onChange($event)" formControlName="amount" matInput placeholder="Amount" type="number"
+                    class="example-right-align">
+                  <span matPrefix>$&nbsp;</span>
+                  <span matSuffix>.00</span>
+              </mat-form-field>
           </div>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <ng-template matStepLabel>Method of Payment</ng-template>
-          <app-ach-payment></app-ach-payment>
-          <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-          </div>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Finalize Payment</ng-template>
-          <app-charge-customer></app-charge-customer>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-</div>
+        </form>
+      </div>
+      <div class="button-group">
+        <button (click)="stepper.next()" mat-raised-button color="primary">Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="paymentAmountForm">
+      <div class="step">
+        <ng-template matStepLabel>Method of Payment</ng-template>
+        <app-ach-payment></app-ach-payment>
+      </div>
+      <div class="button-group">
+        <button (click)="stepper.previous()" mat-raised-button>Back</button>
+        <button (click)="stepper.next()" style="margin-left: 10px;" mat-raised-button color="primary">Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div class="step-charge">
+        <ng-template matStepLabel>Finalize Payment</ng-template>
+        <app-charge-customer [stepper]="stepper" ></app-charge-customer>
+      </div>
+      <div class="button-group">
+        <button (click)="stepper.previous()" mat-raised-button>Back</button>
+      </div>
 
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
