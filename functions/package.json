@@ -13,10 +13,11 @@
     "node": "8"
   },
   "dependencies": {
+    "@angular/pwa": "^0.12.4",
     "@google-cloud/logging": "^0.7.1",
+    "body-parser": "1.17.2",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
-    "body-parser": "1.18.x",
     "ejs": "2.5.x",
     "express": "^4.17.1",
     "firebase-admin": "^8.0.0",

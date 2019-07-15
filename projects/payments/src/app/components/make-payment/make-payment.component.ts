@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { resident$ } from '../../app.defaults';
+import { first } from 'rxjs/operators';
 export const paymentAmount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
 @Component({
@@ -10,6 +12,7 @@ export const paymentAmount$: BehaviorSubject<number> = new BehaviorSubject<numbe
 })
 export class MakePaymentComponent implements OnInit {
   isLinear = false;
+  selectedStepIndex;
   paymentAmountForm: FormGroup;
   constructor(private formBuilder: FormBuilder) { }
 
@@ -17,10 +20,14 @@ export class MakePaymentComponent implements OnInit {
     this.paymentAmountForm = this.formBuilder.group({
       amount: ['', Validators.required]
     });
+    resident$.pipe().subscribe(resident=>{
+      if(!!resident){
+        this.paymentAmountForm.controls['amount'].setValue(resident.amountDue);
+        paymentAmount$.next(resident.amountDue);
+      }
+    });
   }
-
   onChange(event){
-    console.log(this.paymentAmountForm.controls['amount'].value);
     paymentAmount$.next( this.paymentAmountForm.controls['amount'].value);
   }
 

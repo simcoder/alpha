@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import {LoggedInGuard} from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { RegistrationPendingComponent } from './components/registration-pending/registration-pending.component';
 
 const routesWithoutAuth: Routes = [
   {
@@ -32,6 +34,16 @@ const routesWithoutAuth: Routes = [
         path: 'dashboard',
         loadChildren: "../../projects/dashboard/src/app/dashboard.module#DashboardModule",
         outlet: 'details'
+      },
+      {
+        path: 'registration',
+        component: RegistrationComponent,
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'registration-pending',
+        component: RegistrationPendingComponent,
+        canActivate: [LoggedInGuard]
       }
     ]
   },
@@ -68,6 +80,18 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: "../../projects/dashboard/src/app/dashboard.module#DashboardModule",
+        outlet: 'details',
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'registration',
+        component: RegistrationComponent,
+        outlet: 'details',
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'registration-pending',
+        component: RegistrationPendingComponent,
         outlet: 'details',
         canActivate: [LoggedInGuard]
       }

@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { SavedPaymentComponent } from './components/saved-payment/saved-payment.component';
 import { LinkBankAccountComponent } from './components/link-bank-account/link-bank-account.component';
 import { ChargeCustomerComponent } from './components/charge-customer/charge-customer.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { ChargeCustomerComponent } from './components/charge-customer/charge-cus
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule
   ],
   declarations: [ChargeCustomerComponent, LinkBankAccountComponent, CreditCardPaymentComponent, AchPaymentComponent, SavedPaymentComponent],
   exports: [ChargeCustomerComponent, LinkBankAccountComponent, CreditCardPaymentComponent, AchPaymentComponent, SavedPaymentComponent],

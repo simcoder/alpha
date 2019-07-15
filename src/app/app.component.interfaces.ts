@@ -1,5 +1,6 @@
 export interface Menu {
     name: string;
+    order: number;
     route: any;
     icon?: string;
     selectedClass?: string;

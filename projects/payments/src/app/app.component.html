@@ -19,7 +19,7 @@
   </div>
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell--span-12">
-      <mat-tab-group mat-stretch-tabs>
+      <mat-tab-group (selectedTabChange)="onTabChanged($event)" [selectedIndex]="selectdTabIndex" mat-stretch-tabs>
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="icon__container">
@@ -30,6 +30,16 @@
           </ng-template>
           <app-payment-history></app-payment-history>
         </mat-tab>
+        <mat-tab [disabled]="paymentDisabled">
+            <ng-template mat-tab-label>
+              <div class="icon__container">
+                <mat-icon inline="true" color="primary" fontSet="fas" fontIcon="fa-money-bill">
+                  Make Payment
+                </mat-icon>
+              </div>
+            </ng-template>
+            <app-make-payment></app-make-payment>
+          </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="icon__container">
@@ -49,16 +59,6 @@
             </div>
           </ng-template>
           <app-scheduled-payment></app-scheduled-payment>
-        </mat-tab>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <div class="icon__container">
-              <mat-icon inline="true" color="primary" fontSet="fas" fontIcon="fa-money-bill">
-                Make Payment
-              </mat-icon>
-            </div>
-          </ng-template>
-          <app-make-payment></app-make-payment>
         </mat-tab>
       </mat-tab-group>
     </div>

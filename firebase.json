@@ -9,13 +9,17 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "dist",
+    "public": "dist/ROAM",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/stripe/**",
+        "function": "stripe"
+      },
       {
         "source": "**",
         "destination": "/index.html"

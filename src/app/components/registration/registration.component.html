@@ -1,0 +1,31 @@
+<div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell--span-4">
+
+    </div>
+    <div class="mdc-layout-grid__cell--span-4">
+      <div [formGroup]="registrationForm" class="form-container">
+        <mat-form-field>
+          <mat-select formControlName="propertyId" placeholder="Select Property*" >
+            <mat-option *ngFor="let item of properties$ | async" [value]="item.id">{{item.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="Enter Full Name*">
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="unit" matInput placeholder="Enter Unit or Address*">
+        </mat-form-field>
+        <mat-form-field>
+            <input formControlName="residentId" matInput placeholder="Enter Resident Id">
+        </mat-form-field>
+        <div>
+            <button (click)="onRegister()" mat-raised-button color="primary">Register</button>
+        </div>
+      </div>
+    </div>
+    <div class="mdc-layout-grid__cell--span-4">
+
+    </div>
+  </div>
+</div>

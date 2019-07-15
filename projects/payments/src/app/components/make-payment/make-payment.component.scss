@@ -3,3 +3,21 @@
     width: auto;
     justify-content: center;
 }
+.button-group{
+    display: flex;
+    justify-content: flex-end;
+}
+.step{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+.step-charge{
+    height: 200px;
+    display: flex;
+}
+.form-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

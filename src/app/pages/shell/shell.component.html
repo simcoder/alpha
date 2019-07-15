@@ -3,10 +3,12 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <div class="header__row">
+           
           <div class="menu__toggle">
-            <button type="button" mat-button (click)="drawer.toggle()">
-              <fa-icon [icon]="hamburger"></fa-icon>
-            </button>
+            <fa-icon (click)="drawer.toggle()" [icon]="hamburger"></fa-icon>
+            <span style="padding-left:10px;">
+              PMA
+            </span>
           </div>
           <div>
             <mat-slide-toggle color="secondary" checked="false" (change)="onThemSwitch($event)">
@@ -15,7 +17,7 @@
           <div>
              <div class="row">
               <div class="notification">
-                  <mat-icon matBadge="15" matBadgeColor="warn" fontSet="fas" fontIcon="fa-bell"></mat-icon>
+                 <app-notification></app-notification>
               </div>
               <div>
                 <app-avatar (onSignOut)="onSignOut()"></app-avatar>
@@ -30,7 +32,7 @@
     <mat-drawer-container autosize>
       <mat-drawer #drawer mode="side">
             <mat-list>
-                <mat-list-item  *ngFor="let menuItem of sideMenu$ | async">
+                <mat-list-item  *ngFor="let menuItem of sideMenu">
                     <mat-icon fontSet="fas" fontIcon="{{menuItem.icon}}"></mat-icon>
                     <button  [routerLink]="menuItem.route" *ngIf="menuItem.featureFlag" type="button" mat-button
                     [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
