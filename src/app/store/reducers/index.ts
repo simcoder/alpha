@@ -2,7 +2,6 @@ import * as fromLogin from './login.reducer';
 import * as fromUser from './user.reducer';
 import * as fromApp from './app.reducer';
 import * as fromResident from './resident.reducer';
-
 import { ActionReducerMap, createSelector } from '@ngrx/store'
 
 export interface AppState {
@@ -46,9 +45,9 @@ export const appProperties = createSelector(
   selectApp,
   (state:AppState) => state.appState.properties
 );
-export const getResident = createSelector(
+export const getResidentAssociatedUser = createSelector(
   selectApp,
-  (state:AppState) => state.residentState.resident
+  (state:AppState) => state.residentState.residentAssociatedUser
 );
 export const loadedResident = createSelector(
   selectApp,
@@ -62,6 +61,11 @@ export const linkedUserToResident = createSelector(
 export const registrationError = createSelector(
   selectApp,
   (state:AppState) => state.userState.error
+);
+
+export const residentActivationRequestSuccess = createSelector(
+  selectApp,
+  (state:AppState) => state.residentState.residentActivationRequestCompleted
 );
 
 

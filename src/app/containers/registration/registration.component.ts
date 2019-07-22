@@ -1,12 +1,16 @@
 import { UserUpdateRequest } from "./../../store/actions/user.action";
-import {  Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { Component, OnInit } from "@angular/core";
 import { Role } from "../../enums/role.enum";
 import { OverlaySpinnerService } from "libs/components/overlay-spinner/src/public-api";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../store/";
-import { AppPropertiesRequest, ResidentRequest } from "../../store/";
+import {
+  AppPropertiesRequest,
+  ResidentRequest,
+  ResidentActivationRequest
+} from "../../store/";
 import { Property } from "../../models/property.interface";
 import { PMAUser } from "../../models/user.interace";
 
@@ -42,20 +46,31 @@ export class RegistrationComponent implements OnInit {
         ]);
       }
     });
-    this.store.select(fromStore.registrationError).subscribe(error=>{
-      if(error){
+    this.store
+      .select(fromStore.residentActivationRequestSuccess)
+      .subscribe(activationRequestSuccess => {
+        if (activationRequestSuccess) {
+          this.spinner.spin$.next(false);
+          this.router.navigate([
+            { preserveFragment: true },
+            {
+              outlets: {
+                details: "registration-pending"
+              }
+            }
+          ]);
+        }
+      });
+    this.store.select(fromStore.registrationError).subscribe(error => {
+      if (error) {
         this.spinner.spin$.next(false);
       }
-    })
-  }
-
-  onSubmitForm(event: any) {
-
-    this.store.select(fromStore.getResident).subscribe(resp => {
+    });
+    this.store.select(fromStore.getResidentAssociatedUser).subscribe(resp => {
       if (resp) {
         const updatedUser: PMAUser = {
-          ...event.user,
-          residentId: resp.residentId,
+          ...resp.user,
+          residentId: resp.resident.residentId,
           role: Role.RESIDENT
         };
         this.store.dispatch(
@@ -63,24 +78,25 @@ export class RegistrationComponent implements OnInit {
         );
       }
     });
+  }
 
+  onSubmitForm(event: any) {
+    this.spinner.spin$.next(true);
     if (event.form.valid) {
       if (event.form.value.residentId) {
-        this.spinner.spin$.next(true);
-        this.store.dispatch(new ResidentRequest(event.form.value.residentId));
+        this.store.dispatch(
+          new ResidentRequest(event.form.value.residentId, event.user)
+        );
       } else {
-        const pendingActivationPayload = Object.assign(event.form.value, event.user.uid);
-        //dispatch pending activation
-        //this.store.dispatch()
-        // this.router.navigate(
-        //             [
-        //               { preserveFragment: true },
-        //               {
-        //                 outlets: {
-        //                   details: 'registration-pending'
-        //                 }
-        //               }
-        //             ]);
+        const pendingActivationPayload = {
+          name: event.form.value.name,
+          propertyId: event.form.value.propertyId,
+          unit: event.form.value.unit,
+          userUid: event.user.uid
+        };
+        this.store.dispatch(
+          new ResidentActivationRequest(pendingActivationPayload)
+        );
       }
     }
   }
