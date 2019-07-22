@@ -8,8 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ShellComponent } from './pages/shell/shell.component';
 import {LoggedInGuard} from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
-import { RegistrationComponent } from './components/registration/registration.component';
 import { RegistrationPendingComponent } from './components/registration-pending/registration-pending.component';
+import { RegistrationComponent } from './containers/registration/registration.component';
 
 const routesWithoutAuth: Routes = [
   {

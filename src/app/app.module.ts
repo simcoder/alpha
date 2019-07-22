@@ -1,3 +1,4 @@
+import { effects } from './store/effects/index';
 import { BehaviorSubject } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select';
 import { NoModuleComponent } from './components/no-module/no-module.component';
@@ -28,11 +29,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { RegistrationComponent } from './components/registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPendingComponent } from './components/registration-pending/registration-pending.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { loggedInUser$ } from './app.default';
+import { StoreModule, Store } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, UserRequest } from './store'
+import * as fromStore from "./store/";
+import { UserLoginSuccess } from './store/actions/login.action';
+import { RegistrationComponent } from './containers/registration/registration.component';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 export function firebaseAppNameFactory() {
   return `property-management-advisor`;
 }
@@ -46,7 +52,8 @@ export function firebaseAppNameFactory() {
     AvatarComponent,
     RegistrationComponent,
     RegistrationPendingComponent,
-    NotificationComponent
+    NotificationComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +73,8 @@ export function firebaseAppNameFactory() {
     MatMenuModule,
     FontAwesomeModule,
     MatPagesModule.forRoot(),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
     MatIconModule,
     MatBadgeModule,
     MatListModule,
@@ -90,10 +99,11 @@ export function firebaseAppNameFactory() {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private afAuth: AngularFireAuth){
-    this.afAuth.authState.pipe().subscribe(async authUser => {
-      if(authUser){
-        loggedInUser$.next({uid:authUser.uid, email:authUser.email, role:null, name:authUser.displayName});
+  constructor(private afAuth: AngularFireAuth, private store: Store<fromStore.AppState>){
+    this.afAuth.authState.pipe().subscribe(async (user:any) => {
+      if(user){
+        this.store.dispatch(new UserRequest(user.uid));
+        this.store.dispatch(new UserLoginSuccess());
       }
     })
   }

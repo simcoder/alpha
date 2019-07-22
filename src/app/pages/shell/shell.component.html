@@ -32,7 +32,7 @@
     <mat-drawer-container autosize>
       <mat-drawer #drawer mode="side">
             <mat-list>
-                <mat-list-item  *ngFor="let menuItem of sideMenu">
+                <mat-list-item  *ngFor="let menuItem of sideMenu$ | async">
                     <mat-icon fontSet="fas" fontIcon="{{menuItem.icon}}"></mat-icon>
                     <button  [routerLink]="menuItem.route" *ngIf="menuItem.featureFlag" type="button" mat-button
                     [color]="menuItem.selectedClass" (click)="onClickMenuItem(drawer, menuItem)">
