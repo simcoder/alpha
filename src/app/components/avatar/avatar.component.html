@@ -1,4 +1,5 @@
-<button *ngIf="user"
+<div  *ngIf="user$ | async; let user">
+  <button
         mat-mini-fab
         [matMenuTriggerFor]="posXMenu"
         aria-label="Open x-positioned menu"
@@ -7,9 +8,10 @@
         [matTooltip]="user?.displayName">
   
 </button>
+</div>
 
 <mat-menu xPosition="before" #posXMenu="matMenu" class="before">
-  <div fxLayout="row" fxLayout.xs="column" style="padding-left: 10px; padding-right: 10px">
+  <div *ngIf="user$ | async; let user" fxLayout="row" fxLayout.xs="column" style="padding-left: 10px; padding-right: 10px">
     <button mat-fab
             [style.background-image]="'url(' + user?.photoURL + ')'"
             style="background-size: cover">

@@ -17,3 +17,10 @@ export const transformSideMenu = (snapshot:firestore.QuerySnapshot, role : strin
       const sortedMenuItems = _.sortBy(result, 'order');
   return sortedMenuItems
 }
+export const transformProperties = (snapshot:firestore.QuerySnapshot) : any[]=>{
+  const result: any[] = []
+      snapshot.docs.forEach(x => {
+        result.push({ id: x.id, name: x.data().name });
+      });
+  return result;
+}

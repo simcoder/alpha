@@ -7,7 +7,7 @@
       <div [formGroup]="registrationForm" class="form-container">
         <mat-form-field>
           <mat-select formControlName="propertyId" placeholder="Select Property*" >
-            <mat-option *ngFor="let item of properties$ | async" [value]="item.id">{{item.name}}</mat-option>
+            <mat-option *ngFor="let item of properties" [value]="item.id">{{item.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>

@@ -6,7 +6,7 @@
                     tosUrl="/legal/tos" 
                     privacyPolicyUrl="/legal/privacy"
                     [tabIndex]="1" 
-                    [providers]="[providers.Google]" 
+                    [providers]="[providers.Google, providers.Facebook]" 
                     [guestEnabled]="false" 
                     (onSuccess)="onSuccess($event)"
                     (onError)="onError($event)">

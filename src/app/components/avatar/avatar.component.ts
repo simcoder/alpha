@@ -1,16 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { User } from '@firebase/auth-types';
-import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { MatDialog } from '@angular/material';
+import { takeUntil, first } from 'rxjs/operators';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromStore from "../../store/";
+import { PMAUser } from '../../models/user.interace';
 
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
-export class AvatarComponent implements OnInit {
-
+export class AvatarComponent implements OnInit, OnDestroy {
+  
   @Input()
   canLogout = true;
 
@@ -22,16 +23,18 @@ export class AvatarComponent implements OnInit {
   user$: Observable<any | null>;
   displayNameInitials: string;
 
-  constructor(public afa: AngularFireAuth,
-              public dialog: MatDialog) {
-  }
-
+  constructor(private store: Store<fromStore.AppState>) {}
+  ngDestroy$:BehaviorSubject<boolean>=new BehaviorSubject(false);
   ngOnInit() {
-    this.user$ = this.afa.user;
-    this.user$.subscribe((user: User) => {
-      this.user = user;
+    this.user$ = this.store.select(fromStore.getUser);
+    this.user$.pipe(takeUntil(this.ngDestroy$)).subscribe((user: PMAUser) => {
       this.displayNameInitials = user ? this.getDisplayNameInitials(user.displayName) : null;
     });
+    this.store.select(fromStore.userSignoutState).subscribe(isUserSignedOut=>{
+      if(isUserSignedOut){
+        this.onSignOut.emit();
+      }
+    })
   }
 
   getDisplayNameInitials(displayName: string): string {
@@ -43,19 +46,16 @@ export class AvatarComponent implements OnInit {
     return initials;
   }
 
+  ngOnDestroy(): void {
+    this.ngDestroy$.next(true);
+  }
+
   openProfile() {
     //this.dialog.open(UserComponent);
   }
 
-  async signOut() {
-    try {
-      await this.afa.auth.signOut();
-      // Sign-out successful.
-      this.onSignOut.emit();
-    } catch (e) {
-      // An error happened.
-      console.error('An error happened while signing out!', e);
-    }
+  signOut() {
+   this.store.dispatch(new fromStore.UserLogoutRequest());
   }
 
 }
