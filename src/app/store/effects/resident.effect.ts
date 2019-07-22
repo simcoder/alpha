@@ -15,8 +15,16 @@ export class ResidentEffects {
             ofType(residentActions.RESIDENT_REQUEST),
             exhaustMap((action: residentActions.ResidentRequest) =>
                 this.app.getResidentById(action.residentId).pipe(map(resident =>
-                    new residentActions.ResidentSuccess(resident),
+                    new residentActions.ResidentSuccess({resident:resident, user: action.user}),
                     catchError(error => of(new residentActions.ResidentFailure(error))))))));
+
+    residentActivationRequest$ = createEffect(() =>
+                    this.actions$.pipe(
+                        ofType(residentActions.RESIDENT_ACTIVATION_REQUEST),
+                        exhaustMap((action: residentActions.ResidentActivationRequest) =>
+                            this.app.addPendingActivationRecord(action.residentPayload).pipe(map(() =>
+                                new residentActions.ResidentActivationSuccess(),
+                                catchError(error => of(new residentActions.ResidentFailure(error))))))));
                     
 
 }

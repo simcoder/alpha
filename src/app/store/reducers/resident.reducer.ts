@@ -3,13 +3,17 @@ import * as fromResident from '../actions/resident.action';
 export interface ResidentState {
     loading: boolean;
     loaded: boolean;
-    resident: any;
+    residentAssociatedUser: any;
+    residentActivationRequestInitiated:boolean,
+    residentActivationRequestCompleted:boolean
 }
 
 export const initialState: ResidentState = {
-    resident: null,
+    residentAssociatedUser: null,
     loading: false,
-    loaded: false
+    loaded: false,
+    residentActivationRequestInitiated: false,
+    residentActivationRequestCompleted: false
   };
 
   export function reducer (state = initialState, action: any) : ResidentState {
@@ -19,7 +23,7 @@ export const initialState: ResidentState = {
                 ...state,
                 loading : true,
                 loaded: false,
-                resident: null
+                residentAssociatedUser: null
             }
         }
         case fromResident.RESIDENT_SUCCESS : {
@@ -27,15 +31,35 @@ export const initialState: ResidentState = {
                 ...state,
                 loading : false,
                 loaded: true,
-                resident:action.resident
+                residentAssociatedUser:action.residentAssociatedUser
             }
         }
         case fromResident.RESIDENT_FAILURE : {
             return {
                 ...state,
                 loading : false,
-                loaded: false,
-                resident: null
+                loaded: false
+            }
+        }
+        case fromResident.RESIDENT_ACTIVATION_REQUEST : {
+            return {
+                ...state,
+                residentActivationRequestInitiated: true,
+                residentActivationRequestCompleted: false
+            }
+        }
+        case fromResident.RESIDENT_ACTIVATION_SUCCESS : {
+            return {
+                ...state,
+                residentActivationRequestInitiated: false,
+                residentActivationRequestCompleted: true
+            }
+        }
+        case fromResident.RESIDENT_ACTIVATION_FAILURE : {
+            return {
+                ...state,
+                residentActivationRequestInitiated: false,
+                residentActivationRequestCompleted: false
             }
         }
     }
